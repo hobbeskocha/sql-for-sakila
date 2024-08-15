@@ -1,11 +1,16 @@
 --- Lateness
 
--- What length of movies (longer or shorter than the MEDIAN length) are more likely to be returned late?
+-- What length of movies are more likely to be returned late, in each quartile?
 with movie_length as (
 	select 
 		film_id,
-		case when length > (select percentile_cont(0.5) within group(order by length) from film) then 'Longer' 
-			else 'Shorter/Equal' end as relative_length,
+		case 
+			when length <= (select percentile_cont(0.25) within group(order by length) from film) then 'Q1'
+			when length > (select percentile_cont(0.25) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.5) within group(order by length) from film) then 'Q2'
+			when length > (select percentile_cont(0.5) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.75) within group(order by length) from film) then 'Q3'
+			else 'Q4' end as relative_length,
 		length,
 		rental_duration
 	from film
@@ -28,14 +33,20 @@ select relative_length,
 				1, 5),
 			'%') as late_proportion
 	from length_and_returns
-	group by relative_length;
+	group by relative_length
+	order by relative_length;
 
--- Average days late by relative length to MEDIAN?
+-- Average days late by relative length in each quartile?
 with movie_length as (
 	select 
 		film_id,
-		case when length > (select percentile_cont(0.5) within group(order by length) from film) then 'Longer' 
-			else 'Shorter/Equal' end as relative_length,
+		case 
+			when length <= (select percentile_cont(0.25) within group(order by length) from film) then 'Q1'
+			when length > (select percentile_cont(0.25) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.5) within group(order by length) from film) then 'Q2'
+			when length > (select percentile_cont(0.5) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.75) within group(order by length) from film) then 'Q3'
+			else 'Q4' end as relative_length,
 		length,
 		rental_duration
 	from film
@@ -52,7 +63,8 @@ length_and_returns as (
 select relative_length, round(avg(actual_return_date - rental_due_date), 3) as avg_days_late
 	from length_and_returns
 	where late is true
-	group by relative_length;
+	group by relative_length
+	order by relative_length;
 
 
 -- What length of movies (longer or shorter than the AVERAGE length) are more likely to be returned late?

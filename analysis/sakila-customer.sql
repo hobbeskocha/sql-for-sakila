@@ -15,3 +15,5 @@ select country, round(sum(active)::numeric/count(customer_id)::numeric, 2) as ac
 	and ci.country_id = co.country_id
 	group by country
 	order by total_customers desc;
+
+-- TODO: rental volume and revenue by country and genre
