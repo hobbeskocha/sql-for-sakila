@@ -51,3 +51,17 @@ select f.film_id, f.rental_rate, p.amount
 	and p.amount <> 0.00
 	and p.amount >= f.rental_rate;
 
+-- rental volumes
+with rental_volumes as (
+	select f.film_id,
+			count(r.rental_id) as rental_volume
+		from film f, inventory i, rental r
+		where f.film_id = i.film_id
+		and i.inventory_id = r.inventory_id
+		group by f.film_id
+)
+select min(rental_volume),
+		percentile_cont(0.5) within group(order by rental_volume) as median,
+		max(rental_volume)
+	from rental_volumes;
+
