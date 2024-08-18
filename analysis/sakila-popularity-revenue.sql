@@ -16,8 +16,10 @@ create or replace view top_1_revenues as
 		from revenue_and_volume
 		limit (0.01 * (select count(*) from revenue_and_volume))::integer;
 
+-- TODO: identify revenues coming from normal rental rate vs late fees
 select *
 from top_1_revenues;
+
 
 -- TODO rank, partition by
 select f.film_id, sum(p.amount) as total_revenue,
@@ -30,7 +32,6 @@ select f.film_id, sum(p.amount) as total_revenue,
 		order by sum(p.amount) desc;
 
 
--- TODO: identify revenues coming from normal rental rate vs late fees
 
 
 -- Any movies that have never been rented?
