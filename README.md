@@ -1,6 +1,6 @@
 # SQL for Sakila
 
-This is an **in-progress** collaborative personal portfolio project between Amanda Huang and Ayush Shrestha. The dataset used is the Sakila dataset, originally developed by Mike Hillyer of MySQL AB documentatione team and accessible for PostgreSQL [here](https://github.com/jOOQ/sakila)
+This is an **in-progress** collaborative personal portfolio project between [Amanda Huang](https://www.linkedin.com/in/amanda-huang9/) and [Ayush Shrestha](https://www.linkedin.com/in/ayush-yoshi-shrestha/). The dataset used is the Sakila dataset, originally developed by Mike Hillyer of MySQL AB documentatione team and accessible for PostgreSQL [here](https://github.com/jOOQ/sakila)
 
 ## Instructions
 The Sakila dataset was chosen for its comprehensive relational data model, offering opportunities for complex joins and OLAP (Online Analytical Processing). The Exploratory Data Analysis (EDA) files can be accessed [here](eda), and the analysis files are available [here](analysis).
