@@ -11,7 +11,7 @@ create or replace view revenues_and_volume as
 		group by f.film_id, f.title, f.rental_duration, f.rating
 		order by sum(p.amount) desc;
 
--- Identify revenues coming from normal rental rate vs late fees for the top 1%, assuming payments when the movie is late are late fees
+-- Identify revenues coming from normal rental rate vs late fees for the top 1% (by total revenue), assuming payments when the movie is late are late fees
 with top_1_revenues as (
 	select * 
 		from revenues_and_volume
