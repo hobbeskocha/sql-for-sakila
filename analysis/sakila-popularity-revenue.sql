@@ -26,14 +26,16 @@ with top_1_revenues as (
 		and i.inventory_id = r.inventory_id
 		and r.rental_id = p.rental_id
 	)
-select rs.title, 
+select 
+	rs.film_id,
+	rs.title, 
 		sum(case when rs.is_late then 0
 				else rs.amount end) as regular_revenue, 
 		sum(case when rs.is_late then rs.amount
 				else 0 end) as late_revenue,
 		sum(amount) as total_revenue
 	from revenue_streams rs
-	group by rs.title
+	group by rs.film_id, rs.title
 	order by total_revenue desc;
 
 -- which films have earned the highest revenue and have the highest popularity within each rating?
@@ -43,7 +45,7 @@ with rankings as (
 		rank() over(partition by rv.rating order by rv.rental_volume desc) as volume_rank
 		from revenues_and_volume rv
 	)
-select r.title, r.rating, r.revenue_rank, r.volume_rank
+select r.film_id, r.title, r.rating, r.revenue_rank, r.volume_rank
 	from rankings r
 	where (r.revenue_rank = 1 or r.volume_rank = 1);
 

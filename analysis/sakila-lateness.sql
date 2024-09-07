@@ -66,6 +66,7 @@ select relative_length, round(avg(actual_return_date - rental_due_date), 3) as a
 	group by relative_length
 	order by relative_length;
 
+-----------------------------------------------------------------------------------------
 
 -- What length of movies (longer or shorter than the AVERAGE length) are more likely to be returned late?
 with movie_length as (
