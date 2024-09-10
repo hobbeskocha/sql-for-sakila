@@ -1,6 +1,4 @@
 
-
-
 -- check the amount of actors for one film 
 SELECT 
     f.film_id, 
@@ -26,44 +24,7 @@ GROUP BY
     f.film_id
 HAVING 
     COUNT(f_c.category_id) > 1;
-	
 
---- CREATE VIEW: Full_film_table_except_actor --
-
-CREATE VIEW Full_film_table_except_actor AS
-SELECT 
-    f.film_id, 
-    f.title, 
-    f.description, 
-    f.release_year, 
-	f.language_id, 
-    f.rental_duration, 
-    f.rental_rate,
-	f.length, 
-    f.replacement_cost, 
-	f.rating, 
-	f.last_update, 
-	f.special_features, 
-	f.fulltext, 
-    f_c.category_id,
-	l.name as language_name, 
-	c.name as category
-FROM 
-    film as f
-JOIN 
-    film_category as f_c ON f.film_id = f_c.film_id
-JOIN 
-    language as l ON f.language_id = l.language_id
-JOIN 
-    category as c ON f_c.category_id = c.category_id;
-
----
-SELECT * FROM Full_film_table_except_actor LIMIT 10;
-SELECT count(*) FROM Full_film_table_except_actor;
-SELECT count(*) FROM film;
-SELECT * FROM film_actor LIMIT 100;
-SELECT DISTINCT language_name FROM Full_film_table_except_actor;
----
 
 
 -- Popularity & Revenue
@@ -194,8 +155,11 @@ SELECT count(*) FROM film;
 
 --- Create the full rental-film view ---
 SELECT * FROM rental;
+SELECT count(*) FROM rental;
 SELECT * FROM inventory;
+SELECT count(*) FROM inventory;
 SELECT * FROM customer;
+SELECT count(*) FROM customer;
 
 CREATE or REPLACE VIEW rental_film_table AS
 SELECT 
@@ -207,7 +171,7 @@ SELECT
 	r.staff_id, 
     r.last_update, 
     i.film_id, 
-	i.store_id, 
+	i.store_id as inventory_store,
 	F_f_2.title as film_title,
 	F_f_2.description as film_description, 
 	F_f_2.release_year as film_release_year,
@@ -223,14 +187,19 @@ SELECT
 	F_f_2.actor_names as film_actor_names
 FROM 
     rental as r
-JOIN 
+LEFT JOIN 
     inventory as i ON i.inventory_id = r.inventory_id
-JOIN 
+LEFT JOIN 
     Full_film_table_2 as F_f_2 ON F_f_2.film_id = i.film_id;
 
 SELECT * FROM rental_film_table LIMIT 10;
 SELECT count(*) FROM rental_film_table;
 SELECT count(*) FROM rental;
+
+SELECT count(*) FROM Full_film_table_2;
+SELECT * FROM Full_film_table_2;
+SELECT count(*) FROM film;
+
 ---
 
 -- Business Questions [Popularity & Revenue]
@@ -299,8 +268,7 @@ ORDER BY
 
 
 
-
--- Step 1: Create a Table with Rental Counts
+-- Step 1: Create a view with Rental Counts
 
 CREATE OR REPLACE VIEW film_popularity AS
 SELECT 
@@ -311,7 +279,6 @@ FROM
 GROUP BY 
     film_id;
 	
-
 -- Step 2: Join Film Attributes with Rental Counts
 
 CREATE OR REPLACE VIEW film_analysis_data_new AS
@@ -363,4 +330,3 @@ SELECT
 FROM film_analysis_data_new
 JOIN 
     category_numeric_mapping c ON film_analysis_data_new.category_name = c.category_name;
-;
