@@ -1,5 +1,25 @@
 --- Lateness
 
+select 
+		film_id,
+		case 
+			when length <= (select percentile_cont(0.25) within group(order by length) from film) then 'Q1'
+			when length > (select percentile_cont(0.25) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.5) within group(order by length) from film) then 'Q2'
+			when length > (select percentile_cont(0.5) within group(order by length) from film) 
+					and length <= (select percentile_cont(0.75) within group(order by length) from film) then 'Q3'
+			else 'Q4' end as relative_length,
+		length,
+		rental_duration
+	from film;
+
+select 
+	concat(min(length), '-', percentile_cont(0.25) within group(order by length)) as Q1,
+	concat(percentile_cont(0.25) within group(order by length) + 1, '-', percentile_cont(0.5) within group(order by length)) as Q2,
+	concat(percentile_cont(0.5) within group(order by length) + 1, '-', round(percentile_cont(0.75) within group(order by length))) as Q3,
+	concat(round(percentile_cont(0.75) within group(order by length)) + 1, '-', max(length)) as Q4
+	from film;
+
 -- What length of movies are more likely to be returned late, in each quartile?
 with movie_length as (
 	select 
