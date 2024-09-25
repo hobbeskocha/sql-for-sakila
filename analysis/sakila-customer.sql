@@ -54,7 +54,6 @@ FROM customer_loyalty;
 
 
 -- Business questions 2: Loyal customers (which store has higher volume)
-
 -- Step 1: In order to set the threshold, caculate the average-loyal-level of customers first
 -- Step 2: Count the number of about average loyal customers of 2 stores
 
@@ -68,7 +67,7 @@ FROM loyal_customer lc
 LEFT JOIN customer c ON c.customer_id = lc.loyal_customer 
 GROUP BY c.store_id;
 
--- Customer
+
 -- Where are our customers located, by country?; Active customers in each region
 select coalesce(country, 'Overall') as country,
 		round(sum(active)::numeric/count(customer_id)::numeric, 2) as active_proportion,
@@ -92,10 +91,6 @@ select coalesce(country, 'Overall') as country, coalesce(store_id::text, 'Overal
 	group by cube(country, store_id)
 	order by country asc, store asc;
 
--- select store_id, count(distinct customer_id)
--- from customer c, address a
--- 	where c.address_id = a.address_id
--- 	group by store_id;
 
 -- Rental volume and revenue by country and store
 select coalesce(co.country, 'Overall') as country,

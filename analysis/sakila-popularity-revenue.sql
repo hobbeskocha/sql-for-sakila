@@ -1,24 +1,4 @@
--- Popular & Revenue
--- Does the most popular category of movies make the highest revenue? 
--- Which category of movies have the best ratings and highest revenue?
-
-SELECT * FROM rental_film_table LIMIT 10;
-
-WITH Popular_category as (
-	SELECT COUNT(*) as category_popularity, film_category
-	FROM rental_film_table
-	GROUP BY film_category
-)
-SELECT rft.film_category, 
-       SUM(rft.film_rental_rate) as revenue,
-	   pc.category_popularity
-FROM Popular_category pc
-JOIN rental_film_table rft 
-	ON pc.film_category = rft.film_category
-GROUP BY rft.film_category, pc.category_popularity
-ORDER BY REVENUE DESC;
-
---- Popularity & Revenue
+-- Popularity & Revenue
 
 --  What are the top 1% of movies based on the highest revenue generated? 
 	-- Is that high revenue due to popularity (rental rate) or late fees?
@@ -49,6 +29,7 @@ select
 	order by total_revenue desc
 	);
 
+
 -- Identify revenues coming from normal rental rate vs late fees for the top 1% (by total revenue), assuming payments when the movie is late are late fees
 with top_1_revenues as (
 	select * 
@@ -75,6 +56,7 @@ select
 	from revenue_streams rs
 	group by rs.film_id, rs.title
 	order by total_revenue desc;
+
 
 -- which films have earned the highest revenue and have the highest popularity within each rating?
 with rankings as (

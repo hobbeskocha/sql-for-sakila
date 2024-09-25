@@ -11,8 +11,6 @@ SELECT
 FROM rental_film_table
 GROUP BY film_id, return_status
 ORDER BY film_id, return_status;
----
-
 
 
 --- (1)Lateness count by film
@@ -29,7 +27,6 @@ GROUP BY
 ORDER BY 
     late_rentals_count DESC ;
 
----
 
 --- (1-1)Lateness count by film with proportion
 SELECT 
@@ -100,6 +97,7 @@ GROUP BY
 ORDER BY 
     late_proportion DESC;
 
+
 --- (3)Lateness count by store_id
 SELECT 
     c.store_id as store_customer,
@@ -128,14 +126,7 @@ GROUP BY
 ORDER BY 
     late_proportion DESC;
 
-
-
---- (4)Lateness count by film_replacement_cost
---- (5)Lateness count by film_rating
---- (6)Lateness count by film_rental_rate
---- (7)Lateness count by store_id
---- Lateness
-
+-- quartiles for film lengths
 select 
 		film_id,
 		case 
@@ -191,6 +182,7 @@ select relative_length,
 	from length_and_returns
 	group by relative_length
 	order by relative_length;
+
 
 -- Average days late by relative length in each quartile?
 with movie_length as (
@@ -253,6 +245,7 @@ select relative_length,
 			'%') as late_proportion
 	from length_and_returns
 	group by relative_length;
+
 
 -- Average days late by relative length to AVERAGE?
 with movie_length as (
