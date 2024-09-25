@@ -34,5 +34,34 @@ select distinct l.name
 from film f, language l
 where f.language_id = l.language_id
 
+-- payment values
+select distinct amount
+from payment;
 
+-- rental rate values
+select distinct rental_rate
+from film;
+
+-- rental rate vs amount
+select f.film_id, f.rental_rate, p.amount
+	from film f, inventory i, rental r, payment p
+	where f.film_id = i.film_id
+	and i.inventory_id = r.inventory_id
+	and r.rental_id = p.rental_id
+	and p.amount <> 0.00
+	and p.amount >= f.rental_rate;
+
+-- rental volumes
+with rental_volumes as (
+	select f.film_id,
+			count(r.rental_id) as rental_volume
+		from film f, inventory i, rental r
+		where f.film_id = i.film_id
+		and i.inventory_id = r.inventory_id
+		group by f.film_id
+)
+select min(rental_volume),
+		percentile_cont(0.5) within group(order by rental_volume) as median,
+		max(rental_volume)
+	from rental_volumes;
 

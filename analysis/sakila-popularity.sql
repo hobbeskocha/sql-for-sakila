@@ -1,3 +1,4 @@
+-- Popularity Helpers
 
 -- check the amount of actors for one film 
 SELECT 
@@ -24,10 +25,6 @@ GROUP BY
     f.film_id
 HAVING 
     COUNT(f_c.category_id) > 1;
-
-
-
--- Popularity & Revenue
 
 
 --- Create the table "Full_film_table" using left join
@@ -151,8 +148,6 @@ SELECT count(*) FROM film;
 ---
 
 
-
-
 --- Create the full rental-film view ---
 SELECT * FROM rental;
 SELECT count(*) FROM rental;
@@ -200,13 +195,11 @@ SELECT count(*) FROM Full_film_table_2;
 SELECT * FROM Full_film_table_2;
 SELECT count(*) FROM film;
 
----
 
--- Business Questions [Popularity & Revenue]
+-- Business Questions [Popularity]
 
 -- Any correlation between the length of a movie and the popularity?
 -- Or does it mostly depend on the rental rate?
-
 
 --- Length (film_length) vs Popularity ---
 SELECT 
@@ -330,3 +323,23 @@ SELECT
 FROM film_analysis_data_new
 JOIN 
     category_numeric_mapping c ON film_analysis_data_new.category_name = c.category_name;
+
+
+-- Does the most popular category of movies make the highest revenue? 
+-- Which category of movies have the best ratings and highest revenue?
+
+SELECT * FROM rental_film_table LIMIT 10;
+
+WITH Popular_category as (
+	SELECT COUNT(*) as category_popularity, film_category
+	FROM rental_film_table
+	GROUP BY film_category
+)
+SELECT rft.film_category, 
+       SUM(rft.film_rental_rate) as revenue,
+	   pc.category_popularity
+FROM Popular_category pc
+JOIN rental_film_table rft 
+	ON pc.film_category = rft.film_category
+GROUP BY rft.film_category, pc.category_popularity
+ORDER BY REVENUE DESC;
