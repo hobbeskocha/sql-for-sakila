@@ -1,25 +1,40 @@
 # SQL for Sakila
 
-This is an **in-progress** collaborative personal portfolio project between [Amanda Huang](https://www.linkedin.com/in/amanda-huang9/) and [Ayush Shrestha](https://www.linkedin.com/in/ayush-yoshi-shrestha/). The dataset used is the Sakila dataset, originally developed by Mike Hillyer of the MySQL AB documentation team and accessible for PostgreSQL [here](https://github.com/jOOQ/sakila)
+This is a collaborative personal portfolio project between [Amanda Huang](https://www.linkedin.com/in/amanda-huang9/) and [Ayush Shrestha](https://www.linkedin.com/in/ayush-yoshi-shrestha/). The data analyzed is the Sakila dataset, originally developed by Mike Hillyer of the MySQL AB documentation team and accessible for PostgreSQL [here](https://github.com/jOOQ/sakila).
 
-## Instructions
+## Introduction
 
-The Sakila dataset was chosen for its comprehensive relational data model, offering opportunities for complex joins, CTEs, and OLAP (Online Analytical Processing) functions, including Cube, Rank, and Partition. CASE statement were also utilized to aid in effective data querying and analysis.
-The Exploratory Data Analysis (EDA) files can be accessed [here](eda), and the analysis files are available [here](analysis).
+The dataset is a comprehensive multi-table relational database consisting of 15 tables, designed to capture the global operations of a movie rental store. It includes detailed information on customer demographics and rental activity, as well as payment records and the store's movie inventory across locations.
 
-## Overview
+Although video rental stores are rare in today's market, the principles underlying this analysis remain relevant for many businesses, such as e-commerce platforms and streaming services.
 
-Although video rental stores are rare in today's market, the principles underlying this analysis remain relevant for many businesses. This project aims to provide the Sakila DVD rental store with insights into how revenue is influenced by factors such as movie popularity and late fees. Additionally, it seeks to identify patterns in late returns and understand the geographic distribution of rentals and revenue, based on customer locations and store interactions.
+Our goal is to provide Sakila with actionable insights into key revenue drivers, rental patterns, and customer behavior. This includes factors like movie popularity, late returns, and geographic location to help optimize business decisions and strategies. The findings will enable Sakila to make informed decisions on budget allocation for new film acquisitions, maintain optimal inventory levels by predicting late returns, and enhance supply chain efficiency across different regions.
 
-To achieve these objectives, we conduct a series of analyses using PostgreSQL and Power BI. The findings will enable Sakila to make informed decisions on budget allocation for new film acquisitions, maintain optimal inventory levels by predicting late returns, and enhance supply chain efficiency across different regions.
+## Methodology
 
-## Exploratory Data Analysis (EDA)
+We utilize PostgreSQL to host the database and perform our analysis, employing techniques such as:
 
-EDA was conducted using PostgreSQL to gain an overall understanding of the dataset and the relationships between the tables. The complete Entity Relationship Diagram (ERD) is presented below:
+- Joins for combining data across multiple tables
+- Common Table Expressions (CTEs) for simplifying complex queries
+- OLAP (Online Analytical Processing) functions, including Cube, Rank, and Partitioning, for advanced data analysis
+- CASE statements for conditional logic within queries
+
+We further leverage Power BI and Tableau to develop dynamic dashboards and visualizations that effectively communicate our key findings. These include:
+
+- Bar charts
+- Scatter plots
+- Treemaps
+- Combo charts
+
+These visualizations enable stakeholders to interact with the data, facilitating deeper understanding and empowering them to refine strategies based on evolving business needs.
+
+## Data Processing & Exploratory Data Analysis (EDA)
+
+Data processing and EDA were conducted using PostgreSQL to prepare the data for more advanced analysis and to gain a comprehensive understanding of the relationships between the tables. The complete Entity Relationship Diagram (ERD) is presented below, serving as a crucial reference that guided our analysis.
 
 ![sakila-ERD](sakila-erd.png)
 
-The emphasis of the analysis, and consequently the EDA, primarily focused on the following tables:
+Building on the business objectives outlined in the Introduction, the EDA focused primarily on the following tables:
 
 - Film
 - Customer
@@ -27,7 +42,16 @@ The emphasis of the analysis, and consequently the EDA, primarily focused on the
 - Rental
 - Payment
 
-By joining key tables and calculating relevant metrics, we obtained a clear understanding of the dataset's relationships. With this foundation, we proceeded to the first phase of the analysis.
+These tables provided the foundation for exploring relationships, identifying trends, and uncovering patterns within the dataset. Key observations from the EDA include:
+
+- All films are in the same primary language: English.
+- There are two main stores from which customers place rental orders.
+- A subset of films has not been returned.
+- Late payments are generally higher than the initial rental rate of the movies.
+
+The EDA also highlighted important aspects regarding data quality and usability. While the critical tables for our analysis contained sufficient data, some supplementary tables were relatively sparse and less informative. This can be attributed to the synthetic nature of the dataset but was nonetheless an important insight. For example, there is typically only one customer per city, meaning that aggregating data at the country level is necessary to detect patterns in customer behavior.
+
+With this foundation established, we proceeded to the first phase of our analysis.
 
 ## Analysis
 
