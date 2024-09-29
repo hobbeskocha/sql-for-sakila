@@ -32,7 +32,7 @@ select address, city, country
 -- film languages
 select distinct l.name
 from film f, language l
-where f.language_id = l.language_id
+where f.language_id = l.language_id;
 
 -- payment values
 select distinct amount
