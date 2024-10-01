@@ -158,4 +158,4 @@ Introduce a timely-return incentive program to encourage prompt returns, especia
 **3. Optimize Inventory and Customer Engagement:**
 Establish a dynamic inventory-sharing system between Store 1 and Store 2 to optimize resource utilization, reducing shortages in Store 1 by leveraging Store 2’s surplus. Additionally, engage and retain Store 2's loyal customers with exclusive offers and loyalty programs, capitalizing on their strong relationships to boost rental activity. Further, tailor these marketing strategies based on regional preferences, especially for critical markets like China, India, and Mexico, to drive sales and customer engagement.
 
-By capitalizing on the most profitable film categories, optimizing film returns & inventory managmement strategies, and engaging more deeply with loyal customers, Sakila can increase profitability and customer satisfaction across its global operations.
+By capitalizing on the most profitable film categories, optimizing film returns & inventory management strategies, and engaging more deeply with loyal customers, Sakila can increase profitability and customer satisfaction across its global operations.
