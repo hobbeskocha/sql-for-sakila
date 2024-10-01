@@ -116,9 +116,9 @@ This reveals unique customer behavior that runs counter to initial expectations.
 
 This dashboard offers a clear comparison of customer behavior between Store 1 and Store 2, revealing the following key insights:
 
-- **Inventory:** Store 1 has a higher total rental count, indicating a larger customer base. However, its inventory supply is lower, suggesting that Store 1's warehouse may be struggling to meet demand. In contrast, Store 2, despite being less popular and having fewer rentals, plays a vital role in fulfilling inventory needs as it holds a larger stock of available rentals.
+- Store 1 has a higher total rental count, indicating a larger customer base. However, its inventory supply is lower, suggesting that Store 1's warehouse may be struggling to meet demand. In contrast, Store 2, despite being less popular and having fewer rentals, plays a vital role in fulfilling inventory needs as it holds a larger stock of available rentals.
 
-- **Loyal customers:** By utilizing the interactive filter function, we can compare the proportions of loyal customers (those with rentals above the average across all customers) between the two stores. Although the proportions of loyal customers are similar for both stores, Store 2 has a notably higher proportion of "super loyal" customers (those with significantly more rentals). This indicates that while Store 2 has a smaller customer base, its stronger relationships with loyal customers present an opportunity for deeper engagement and retention strategies.
+- By utilizing the interactive filter function, we can compare the proportions of loyal customers (those with rentals above the average across all customers) between the two stores. Although the proportions of loyal customers are similar for both stores, Store 2 has a notably higher proportion of "super loyal" customers (those with significantly more rentals). This indicates that while Store 2 has a smaller customer base, its stronger relationships with loyal customers present an opportunity for deeper engagement and retention strategies.
 
 - _Where are our active customers located geographically? How much revenue and rental volume do they bring to the company?_
 
@@ -146,3 +146,32 @@ Utilizing dynamic filtering, we identify that:
 These insights highlight the geographic differences in customer behavior and market importance between the two stores, which can inform targeted business strategies by location.
 
 ## Recommendations
+
+With the wealth of findings uncovered, we can offer the following recommendations to Sakila for each defined business area.
+
+**Revenue & Popularity**:
+
+_Focus on PG-13 and NC-17 Movies_: Since PG-13 and NC-17 movies generate the highest overall revenue, Sakila should prioritize marketing and inventory stocking for these categories. The following strategies can be employed to capitalize on their profitability:
+- **Exclusive Collections**: Create curated collections of popular PG-13 and NC-17 films (e.g., "Top-Grossing PG-13 Hits" or "NC-17 Cult Classics") to attract more customers and highlight these high-revenue categories.
+- **Stock Optimization**: Ensure adequate inventory for PG-13 and NC-17 films to meet demand, particularly for new releases or popular titles.
+
+_Capitalize on High-Revenue, Low-Volume Genres_: Categories like Sci-Fi and Drama, while not the most popular, generate significant revenue. To enhance profitability from these genres, Sakila can adopt the following strategies:
+- **Targeted Discounts**: Offer special discounts or promotional pricing on Sci-Fi and Drama films, particularly for high-revenue titles. Promotions such as "Sci-Fi Sundays" or "Drama Discounts" could incentivize customers to explore these less-rented but profitable categories.
+- **Loyalty Program Perks**: Introduce exclusive perks within the loyalty program for renting Sci-Fi and Drama films. For example, double reward points or bonus credits for customers who rent multiple films in these genres would encourage more frequent rentals.
+
+**Lateness**:
+
+_Timely Returns_: Given the discrepancy in the average days late based on film length, Sakila should introduce a timely-return incentive program to encourage customers to return films on time, especially for shorter films. This could include:
+- **Point System or Rental Credit**: Customers earn points or credits for each timely return, which can be redeemed for discounts on future rentals. This system would motivate customers to return films promptly, reducing late returns and easing inventory bottlenecks.
+- **Bonus for Shorter Films**: Offer additional points or credits for returning shorter films on time, as these are often returned later than expected. This targeted incentive would help mitigate the issue of shorter films being held longer than necessary.
+
+**Customer & Store**:
+
+Inventory Optimization Between Stores: Store 1 has a larger customer base but struggles with inventory shortages, while Store 2 holds more inventory but has fewer rentals. To optimize resources, a more dynamic inventory-sharing system should be implemented to redistribute films between stores based on demand. This could reduce stockouts in Store 1 and boost utilization of Store 2’s surplus inventory.
+
+Engage and Retain Loyal Customers at Store 2: Store 2’s smaller yet highly loyal customer base represents an opportunity for deeper engagement. Implement loyalty programs or exclusive offers for "super loyal" customers to retain and expand their rental activity, which could help Store 2 close the gap with Store 1 in terms of overall rental volume.
+
+Tailor Marketing by Region:
+- China and India are critical markets for both stores, so maintaining a steady supply of popular films and targeted promotions in these countries is essential.
+- The United States is a key market for both stores and should be treated as equally important in marketing and inventory strategies
+- Mexico’s importance to Store 2 indicates an opportunity to launch targeted campaigns and regional incentives that cater to Mexican customers’ preferences, further increasing Store 2’s rental volume.
