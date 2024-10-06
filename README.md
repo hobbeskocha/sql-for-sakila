@@ -59,7 +59,7 @@ We focussed on three broad categories for analysis, each with specific business 
 
 **A. Revenue & Popularity:** Exploring the relationship between total revenue, rental volume, and film attributes.
 
-- _Which movies generate the highest revenue? Is this revenue driven by popularity or late fees?_
+_Which movies generate the highest revenue? Is this revenue driven by popularity or late fees?_
 
 ![Revenue Popularity 1](artifacts/rev_pop_1_1.png)
 
@@ -71,9 +71,9 @@ The dashboard above presents a breakdown of revenue by late fees and regular rev
 
 ![Revenue Popularity 2](artifacts/rev_pop_1_2.png)
 
-When further filtering for PG-13 and NC-17 movies alone, the same negative correlations persist among the top revenue-earning and top-ranking films. This highlights an interesting dynamic where popularity does not always align with profitability, and late fees play a significant role in the revenue of top-grossing films.
+- When further filtering for PG-13 and NC-17 movies alone, the same negative correlations persist among the top revenue-earning and top-ranking films. This highlights an interesting dynamic where popularity does not always align with profitability, and late fees play a significant role in the revenue of top-grossing films.
 
-- _Which movie categories have the highest popularity and revenue?_
+_Which movie categories have the highest popularity and revenue?_
 
 ![Revenue Popularity 3](artifacts/rev_pop_2_1.png)
 
@@ -84,7 +84,7 @@ These bar charts visualize rental volumes across various categories, highlightin
 
 This misalignment suggests that certain categories, despite not having the highest rental volumes, are more profitable due to higher rental rates or increased late fees.
 
-- _Is there any correlation between a movie's length and its popularity, or is it largely influenced by the rental rate?_
+_Is there any correlation between a movie's length and its popularity, or is it largely influenced by the rental rate?_
 
 ![Revenue Popularity 4](artifacts/rev_pop_3_1.png)
 
@@ -97,7 +97,7 @@ These patterns reveal that rental rates play a more significant role in influenc
 
 **B. Lateness:** Analyzing which movies are more likely to be returned late and the extent of the lateness.
 
-- _Are longer or shorter movies more likely to be returned late? By what magnitude?_
+_Are longer or shorter movies more likely to be returned late? By what magnitude?_
 
 ![Lateness 1](artifacts/lateness_1_1.png)
 
@@ -106,11 +106,13 @@ This visualization compares the number of rentals returned late against the tota
 - The proportion of late rentals to total rentals is relatively consistent across all quartiles.
 - The average number of days late decreases as film length increases.
 
-This reveals unique customer behavior that runs counter to initial expectations. One might assume that longer films would be returned later due to factors such as requiring multiple sittings to finish watching or needing to schedule a dedicated movie night for the extended viewing. Both scenarios would suggest that longer films would be returned **more** days late, rather than fewer. However, the data shows the opposite trend, indicating that customers may be more diligent about returning longer films on time, possibly to avoid accruing higher late fees.
+This reveals unique customer behavior that runs counter to initial expectations. One might assume that longer films would be returned later due to factors such as requiring multiple sittings to finish watching or needing to schedule a dedicated movie night for the extended viewing. Both scenarios would suggest that longer films would be returned **more** days late, rather than fewer.
+
+However, the data shows the opposite trend, indicating that customers may be more diligent about returning longer films on time, possibly to avoid accruing higher late fees.
 
 **C. Customers:** Understanding the distribution of customers by country and store preference, along with store inventory.
 
-- _How many customers are considered loyal? Which store has a higher number of loyal customers, and do they rent more frequently?_
+_How many customers are considered loyal? Which store has a higher number of loyal customers, and do they rent more frequently?_
 
 ![Customers 1 1](artifacts/customers_1_1.png)
 
@@ -122,7 +124,7 @@ This dashboard offers a clear comparison of customer behavior between Store 1 an
 
 - By utilizing the interactive filter function on the Loyal Threshold (shown above), we can compare the proportions of loyal customers (those with rentals above the average across all customers) between the two stores. Although the proportions of loyal customers are similar for both stores, Store 2 has a notably higher proportion of "super loyal" customers (those with significantly more rentals). This indicates that while Store 2 has a smaller customer base, its stronger relationships with loyal customers present an opportunity for deeper engagement and retention strategies.
 
-- _Where are our active customers located geographically? How much revenue and rental volume do they bring to the company?_
+_Where are our active customers located geographically? How much revenue and rental volume do they bring to the company?_
 
 ![Customers 2 1](artifacts/customers_2_1.png)
 
@@ -133,11 +135,11 @@ This dashboard provides an overview of revenue and rental volume from each count
 
 ![Customers 2 2](artifacts/customers_2_2.png)
 
-When filtering for Store 1, India, China, and the United States remain the top markets in terms of both revenue and customer interaction.
+- When filtering for Store 1, India, China, and the United States remain the top markets in terms of both revenue and customer interaction.
 
 ![Customers 2 3](artifacts/customers_2_3.png)
 
-When filtering for Store 2, China, India, and Mexico are the top markets, with the United States ranking closely behind Mexico.
+- When filtering for Store 2, China, India, and Mexico are the top markets, with the United States ranking closely behind Mexico.
 
 Utilizing dynamic filtering, we identify that:
 
