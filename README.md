@@ -63,7 +63,7 @@ We focussed on three broad categories for analysis, each with specific business 
 
 ![Revenue Popularity 1](artifacts/rev_pop_1_1.png)
 
-The dashboard above present a breakdown of revenue by late fees and regular revenue for each MPAA rating, along with a deeper analysis of the films generating the top 1% of revenue and those ranked No. 1 by total revenue or popularity. Key observations include:
+The dashboard above presents a breakdown of revenue by late fees and regular revenue for each MPAA rating, along with a deeper analysis of the films generating the top 1% of revenue and those ranked No. 1 by total revenue or popularity. Key observations include:
 
 - PG-13 and NC-17 movies generate the highest overall revenue.
 - Among the films generating the top 1% of revenue, there is a negative correlation between late fees and regular revenue, indicating that films earning higher late fees tend to have lower regular rental revenue.
@@ -75,9 +75,9 @@ When further filtering for PG-13 and NC-17 movies alone, the same negative corre
 
 - _Which movie categories have the highest popularity and revenue?_
 
-![Revenue Popularity 3]()
+![Revenue Popularity 3](artifacts/rev_pop_2_1.png)
 
-The bar chart visualizes rental volumes across various categories, highlighting the discrepancy between categories that generate the most revenue and those that are the most popular by rental volume.
+These bar charts visualize rental volumes across various categories, highlighting the discrepancy between categories that generate the most revenue and those that are the most popular by rental volume.
 
 - Most popular categories (by rental volume): (1) Sports, (2) Animation, (3) Action
 - Most lucrative categories (by revenue): (1) Sports, (2) Sci-Fi, (3) Drama
@@ -86,9 +86,9 @@ This misalignment suggests that certain categories, despite not having the highe
 
 - _Is there any correlation between a movie's length and its popularity, or is it largely influenced by the rental rate?_
 
-![Revenue Popularity 4]()
+![Revenue Popularity 4](artifacts/rev_pop_3_1.png)
 
-The bar chart illustrates the distribution of rental volumes across different film lengths and rental rates, uncovering distinct customer behaviors tied to pricing:
+These charts illustrate the distribution of rental volumes across different film lengths and rental rates, uncovering distinct customer behaviors tied to pricing:
 
 - Films with the lowest rental rate show a relatively even distribution across most film lengths, with the exception of films lasting 180 minutes, which have noticeably fewer rentals. This indicates that customers are generally less selective about film length when paying a lower rate, as affordability seems to be the primary factor driving their rental choices.
 - Films with higher rental rates, on the other hand, exhibit a more uneven distribution of rentals, with longer films being rented more frequently. This suggests that customers paying a premium rate are more selective and tend to prefer longer films, likely seeking to maximize their viewing experience.
@@ -112,13 +112,15 @@ This reveals unique customer behavior that runs counter to initial expectations.
 
 - _How many customers are considered loyal? Which store has a higher number of loyal customers, and do they rent more frequently?_
 
-![Customers 1]()
+![Customers 1 1](artifacts/customers_1_1.png)
 
 This dashboard offers a clear comparison of customer behavior between Store 1 and Store 2, revealing the following key insights:
 
 - Store 1 has a higher total rental count, indicating a larger customer base. However, its inventory supply is lower, suggesting that Store 1's warehouse may be struggling to meet demand. In contrast, Store 2, despite being less popular and having fewer rentals, plays a vital role in fulfilling inventory needs as it holds a larger stock of available rentals.
 
-- By utilizing the interactive filter function, we can compare the proportions of loyal customers (those with rentals above the average across all customers) between the two stores. Although the proportions of loyal customers are similar for both stores, Store 2 has a notably higher proportion of "super loyal" customers (those with significantly more rentals). This indicates that while Store 2 has a smaller customer base, its stronger relationships with loyal customers present an opportunity for deeper engagement and retention strategies.
+![Customers 1 1](artifacts/customers_1_2.png)
+
+- By utilizing the interactive filter function on the Loyal Threshold (shown above), we can compare the proportions of loyal customers (those with rentals above the average across all customers) between the two stores. Although the proportions of loyal customers are similar for both stores, Store 2 has a notably higher proportion of "super loyal" customers (those with significantly more rentals). This indicates that while Store 2 has a smaller customer base, its stronger relationships with loyal customers present an opportunity for deeper engagement and retention strategies.
 
 - _Where are our active customers located geographically? How much revenue and rental volume do they bring to the company?_
 
