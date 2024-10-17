@@ -57,15 +57,51 @@ select
 	group by rs.film_id, rs.title
 	order by total_revenue desc;
 
+-- correlation between late and regular rev
+with top_1_revenues as (
+	select * 
+		from revenues_and_volume
+		limit (0.01 * (select count(*) from revenues_and_volume))::integer
+	),
+	revenue_streams as (
+		select tr.film_id, tr.title,
+			date(r.return_date) > date(r.rental_date + tr.rental_duration * interval '1 day') as is_late,
+			p.amount
+		from top_1_revenues tr, inventory i, rental r, payment p
+		where tr.film_id = i.film_id
+		and i.inventory_id = r.inventory_id
+		and r.rental_id = p.rental_id
+	),
+	cte as (
+	select 
+	rs.film_id,
+	rs.title, 
+		sum(case when rs.is_late then 0
+				else rs.amount end) as regular_revenue, 
+		sum(case when rs.is_late then rs.amount
+				else 0 end) as late_revenue,
+		sum(amount) as total_revenue
+	from revenue_streams rs
+	group by rs.film_id, rs.title
+	order by total_revenue desc
+	)
+select corr(regular_revenue, late_revenue)
+from cte;
 
--- which films have earned the highest revenue and have the highest popularity within each rating?
+
+-- correlation between rev and rental volume
 with rankings as (
 	select rv.film_id, rv.title, rv.rating,
 		rank() over(partition by rv.rating order by rv.total_revenue desc) as revenue_rank,
 		rank() over(partition by rv.rating order by rv.rental_volume desc) as volume_rank
 		from revenues_and_volume rv
-	)
-select r.film_id, r.title, r.rating, r.revenue_rank, r.volume_rank
+	),
+	cte as (
+	select r.film_id, r.title, r.rating, r.revenue_rank, r.volume_rank
 	from rankings r
-	where (r.revenue_rank = 1 or r.volume_rank = 1);
+	where (r.revenue_rank = 1 or r.volume_rank = 1))
+select corr(
+	rva.total_revenue, rva.rental_volume)
+	from revenue_volume_all rva, cte
+	where rva.film_id = cte.film_id;
 
