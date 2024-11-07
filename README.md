@@ -1,5 +1,7 @@
 # SQL for Sakila
 
+![Movies](artifacts/movie-rentals.png)
+
 This is a collaborative personal portfolio project between [Ayush Shrestha](https://www.linkedin.com/in/ayush-yoshi-shrestha/) and [Amanda Huang](https://www.linkedin.com/in/amanda-huang9/). The data analyzed is the Sakila dataset, originally developed by Mike Hillyer of the MySQL AB documentation team and accessible for PostgreSQL [here](https://github.com/jOOQ/sakila).
 
 ## Introduction
